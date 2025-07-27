@@ -180,6 +180,16 @@ QUOTES = {
         "Don't confuse education with intelligence.",
         "Starting a company is like chewing glass and staring into the void.",
         "I'm not trying to be anyone's savior. I just want to think about the future and not be sad."
+    ],
+    "bonaparte": [
+        "Impossible n'est pas français.",
+        "Le courage n'est pas l'absence de peur, mais la capacité de vaincre ce qui fait peur.",
+        "La meilleure façon de tenir sa parole est de ne jamais la donner.",
+        "Il faut vouloir vivre et savoir mourir.",
+        "Le succès n'est pas final, l'échec n'est pas fatal : c'est le courage de continuer qui compte.",
+        "On ne conduit le peuple qu'en lui montrant un avenir : un chef est un marchand d'espérance.",
+        "La victoire appartient au plus persévérant.",
+        "Celui qui craint d'être vaincu est sûr de la défaite."
     ]
 }
 
@@ -194,6 +204,7 @@ Available commands:
 /hormozi - Alex Hormozi's business insights
 /tate - Andrew Tate's alpha mindset
 /musk - Elon Musk's innovation quotes
+/bonaparte - Citations de Napoléon Bonaparte 🇫🇷
 
 Stay hard! 💪
     """
@@ -224,6 +235,11 @@ async def musk_quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
     quote = random.choice(QUOTES["musk"])
     await update.message.reply_text(f"🚀 **Elon Musk:**\n\n*\"{quote}\"*", parse_mode='Markdown')
 
+async def bonaparte_quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Commande /bonaparte"""
+    quote = random.choice(QUOTES["bonaparte"])
+    await update.message.reply_text(f"🇫🇷 **Napoléon Bonaparte :**\n\n*\"{quote}\"*", parse_mode='Markdown')
+
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Gestion des erreurs"""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
@@ -240,6 +256,7 @@ def main() -> None:
     application.add_handler(CommandHandler("hormozi", hormozi_quote, filters=None))
     application.add_handler(CommandHandler("tate", tate_quote, filters=None))
     application.add_handler(CommandHandler("musk", musk_quote, filters=None))
+    application.add_handler(CommandHandler("bonaparte", bonaparte_quote, filters=None))
 
     # Ajouter le gestionnaire d'erreurs
     application.add_error_handler(error_handler)

@@ -6,12 +6,9 @@ Bot Telegram qui répond avec des citations motivationnelles aléatoires
 import random
 import logging
 import os
-from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-# Charger les variables d'environnement depuis le fichier .env
-load_dotenv()
 
 # Configuration du logging
 logging.basicConfig(
@@ -21,10 +18,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Token du bot (chargé depuis le fichier .env)
-BOT_TOKEN = os.getenv('TELEGRAM_API_KEY')
+BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 if not BOT_TOKEN:
-    raise ValueError("TELEGRAM_API_KEY manquante dans le fichier .env")
+    raise ValueError("BOT_TOKEN manquante dans le fichier .env")
 
 # Citations par catégorie
 QUOTES = {
@@ -187,6 +184,20 @@ QUOTES = {
         "Don't confuse education with intelligence.",
         "Starting a company is like chewing glass and staring into the void.",
         "I'm not trying to be anyone's savior. I just want to think about the future and not be sad."
+    ],
+    "bonaparte": [
+        "Impossible n'est pas français.",
+        "Le courage n'est pas l'absence de peur, mais la capacité de vaincre ce qui fait peur.",
+        "La meilleure façon de tenir sa parole est de ne jamais la donner.",
+        "Il faut vouloir vivre et savoir mourir.",
+        "Le succès n'est pas final, l'échec n'est pas fatal : c'est le courage de continuer qui compte.",
+        "On ne conduit le peuple qu'en lui montrant un avenir : un chef est un marchand d'espérance.",
+        "La victoire appartient au plus persévérant.",
+        "Celui qui craint d'être vaincu est sûr de la défaite.",
+        "le vrai courage c'est celui de 3h du matin",
+        "les hommes de génie sont des météores destinés à brûler pour éclairer leur siècle",
+        "la mort n'est rien, mais vivre vaincu et sans gloire, c'est mourir tous les jours",
+        "impossible est un mot qu'on trouve dans le dictionnaire des idiots",
     ]
 }
 
