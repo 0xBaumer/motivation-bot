@@ -212,6 +212,7 @@ Available commands:
 /hormozi - Alex Hormozi's business insights
 /tate - Andrew Tate's alpha mindset
 /musk - Elon Musk's innovation quotes
+/bonaparte - Wisdom from Napoleon Bonaparte
 
 Stay hard! 💪
     """
@@ -242,6 +243,11 @@ async def musk_quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
     quote = random.choice(QUOTES["musk"])
     await update.message.reply_text(f"🚀 **Elon Musk:**\n\n*\"{quote}\"*", parse_mode='Markdown')
 
+async def bonaparte_quote(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Commande /bonaparte"""
+    quote = random.choice(QUOTES["bonaparte"])
+    await update.message.reply_text(f"👑 **Napoléon Bonaparte:**\n\n*\"{quote}\"*", parse_mode='Markdown')
+
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Gestion des erreurs"""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
@@ -258,6 +264,7 @@ def main() -> None:
     application.add_handler(CommandHandler("hormozi", hormozi_quote))
     application.add_handler(CommandHandler("tate", tate_quote))
     application.add_handler(CommandHandler("musk", musk_quote))
+    application.add_handler(CommandHandler("bonaparte", bonaparte_quote))
 
     # Ajouter le gestionnaire d'erreurs
     application.add_error_handler(error_handler)
