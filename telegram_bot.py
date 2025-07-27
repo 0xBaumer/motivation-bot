@@ -6,8 +6,12 @@ Bot Telegram qui répond avec des citations motivationnelles aléatoires
 import random
 import logging
 import os
+from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
+
+# Charger les variables d'environnement depuis le fichier .env
+load_dotenv()
 
 # Configuration du logging
 logging.basicConfig(
@@ -16,8 +20,11 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Token du bot (utilise une variable d'environnement en production)
-BOT_TOKEN = os.getenv('BOT_TOKEN', '7836750010:AAE9iW2qLXLNxivMH3Yh_K2UbrxghW9cyBc')
+# Token du bot (chargé depuis le fichier .env)
+BOT_TOKEN = os.getenv('TELEGRAM_API_KEY')
+
+if not BOT_TOKEN:
+    raise ValueError("TELEGRAM_API_KEY manquante dans le fichier .env")
 
 # Citations par catégorie
 QUOTES = {
