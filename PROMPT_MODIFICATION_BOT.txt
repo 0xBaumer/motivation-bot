@@ -1,0 +1,45 @@
+🤖 PROMPT POUR MODIFICATION BOT TELEGRAM
+========================================
+
+Salut ! Je veux modifier mon bot Telegram VC Scraper. Voici le contexte complet :
+
+📍 LOCALISATION:
+- Dossier principal: /Users/balintnussbaumer/Desktop/Scrapers
+- Fichier bot: telegram_bot.js
+- Fichier scraper: vc-portfolio-scraper.ts
+- Variables env: .env
+- Guide utilisateur: /Users/balintnussbaumer/Desktop/GUIDE_BOT_TELEGRAM.txt
+
+🤖 INFOS BOT ACTUEL:
+- Nom: @LegendarySourcerBot
+- Token: Dans .env (TELEGRAM_BOT_TOKEN)
+- Chat ID: Dans .env (TELEGRAM_CHAT_ID)  
+- Accès: Ouvert à tous (pas de restriction utilisateur)
+- Runtime: Bun (pas Node.js)
+
+📱 COMMANDES ACTUELLES:
+- /source ou /start_scraping → Lance le scraping VC
+- /status → Vérifie si le scraper tourne
+- /help ou /start → Affiche l'aide
+
+🏗️ ARCHITECTURE:
+- sendMessage(text, chatId) → Envoie message Telegram
+- runSourceLoop(chatId, messageId) → Execute le scraping
+- processTelegramUpdates() → Traite les messages reçus
+- Commandes dans switch/case (lignes ~97-118)
+
+🔄 PROCESSUS MODIFICATION:
+1. Modifier telegram_bot.js
+2. Redémarrer avec: pkill -f telegram_bot.js puis ./start_bot.sh
+3. Tester les nouvelles commandes
+
+⚙️ SYSTÈME ACTUEL:
+- Bot tourne en arrière-plan (nohup)
+- Logs dans bot.log  
+- Scraping auto toutes les 12h (cron)
+- Surveille 21 sites VC, 853+ projets
+
+🎯 DEMANDE DE MODIFICATION:
+[Décris ici ce que tu veux ajouter/modifier]
+
+Exemple: "Ajoute une commande /quote qui affiche des citations motivantes aléatoirement"
